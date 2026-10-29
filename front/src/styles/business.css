@@ -1,0 +1,345 @@
+/* 业务管理共用筛选、表格、状态和表单样式，沿用系统蓝色与 Semi UI 控件。 */
+.business-page {
+  min-width: 0;
+}
+.business-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.business-stat {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px;
+  background: #fff;
+  border-radius: 10px;
+  min-width: 0;
+}
+.business-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: #edf5ff;
+  color: #1681ff;
+  flex-shrink: 0;
+}
+.business-stat small {
+  display: block;
+  color: #8193ae;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.business-stat strong {
+  font-size: 24px;
+  color: #182e53;
+  overflow-wrap: anywhere;
+}
+.business-stat > div {
+  min-width: 0;
+}
+.business-filter {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #edf1f7;
+}
+.business-filter label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #7286a5;
+  font-size: 12px;
+}
+.business-filter label:first-child {
+  width: 270px;
+}
+.business-filter input,
+.business-filter select {
+  width: 100%;
+  height: 34px;
+  border: 1px solid #dce5f2;
+  border-radius: 5px;
+  padding: 0 11px;
+  background: #fff;
+  color: #304b72;
+  font: inherit;
+  min-width: 0;
+}
+.business-filter select {
+  min-width: 140px;
+}
+.business-filter input:focus,
+.business-filter select:focus {
+  outline: 2px solid #d0e6ff;
+  border-color: #1677ff;
+}
+.business-filter .filter-actions {
+  margin-right: auto;
+}
+.business-table {
+  min-width: 940px;
+}
+.business-table th,
+.business-table td {
+  padding: 15px 12px;
+  white-space: nowrap;
+}
+.business-table .business-name {
+  max-width: 190px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.business-subtext {
+  display: block;
+  font-size: 11px;
+  color: #91a1b9;
+  margin-top: 5px;
+}
+.business-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.business-row-actions button {
+  color: #1677ff;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.business-row-actions button.danger {
+  color: #f16b7c;
+}
+.business-row-actions button:disabled {
+  color: #aab6c8;
+  cursor: wait;
+}
+.business-row-actions button:focus-visible {
+  outline: 2px solid #1677ff;
+  outline-offset: 3px;
+}
+.business-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  background: #eef2f7;
+  color: #8394ad;
+}
+.business-status::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.business-status.green {
+  color: #14ab87;
+  background: #e7f8f1;
+}
+.business-status.blue {
+  color: #1677ff;
+  background: #eaf3ff;
+}
+.business-status.orange {
+  color: #d99b2a;
+  background: #fff6e5;
+}
+.business-status.purple {
+  color: #9567df;
+  background: #f1ecff;
+}
+.business-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 22px;
+  color: #8193ae;
+  font-size: 12px;
+}
+.business-empty {
+  text-align: center;
+  padding: 70px 20px !important;
+  color: #8a9bb4;
+}
+.business-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.business-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  font-size: 12px;
+  color: #607694;
+}
+.business-field.full {
+  grid-column: 1/-1;
+}
+.business-field input,
+.business-field select,
+.business-field textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dce5f2;
+  border-radius: 5px;
+  padding: 9px 11px;
+  font: inherit;
+  color: #304b72;
+  background: #fff;
+  min-width: 0;
+}
+.business-field input:focus,
+.business-field select:focus,
+.business-field textarea:focus {
+  outline: 2px solid #d0e6ff;
+  border-color: #1677ff;
+}
+.business-field input:disabled {
+  background: #f5f7fb;
+}
+.business-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+.business-field small,
+.business-help {
+  font-size: 11px;
+  color: #91a1b9;
+  line-height: 1.7;
+}
+.business-form-error {
+  grid-column: 1/-1;
+  padding: 10px 12px;
+  color: #d94d65;
+  background: #fff2f3;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.business-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.business-details dt {
+  font-size: 11px;
+  color: #91a1b9;
+  margin-bottom: 7px;
+}
+.business-details dd {
+  font-size: 13px;
+  color: #304b72;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.business-details .full {
+  grid-column: 1/-1;
+}
+.business-order-items {
+  grid-column: 1/-1;
+  border-top: 1px solid #edf1f7;
+  padding-top: 18px;
+}
+.business-item-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 95px 100px 30px;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f3f8;
+  font-size: 12px;
+}
+.business-item-row input {
+  width: 100%;
+  height: 32px;
+  padding: 6px;
+  border: 1px solid #dce5f2;
+  border-radius: 4px;
+}
+.business-item-row strong {
+  overflow-wrap: anywhere;
+}
+.business-item-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0;
+}
+.business-item-picker select {
+  width: 100%;
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid #dce5f2;
+  border-radius: 5px;
+  background: white;
+  color: #304b72;
+}
+.business-total {
+  text-align: right;
+  margin: 16px 0;
+  color: #7084a4;
+}
+.business-total strong {
+  font-size: 22px;
+  color: #1677ff;
+  margin-left: 8px;
+}
+.business-dialog-note {
+  color: #7388a6;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+@media (max-width: 1100px) {
+  .business-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .business-stat {
+    padding: 16px;
+    gap: 10px;
+  }
+  .business-stat strong {
+    font-size: 20px;
+  }
+  .business-stat-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .business-stats {
+    gap: 10px;
+  }
+  .business-filter label:first-child {
+    width: 100%;
+  }
+  .business-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .business-field.full {
+    grid-column: auto;
+  }
+  .business-item-row {
+    grid-template-columns: minmax(0, 1fr) 65px 70px 24px;
+    gap: 6px;
+  }
+  .business-pagination {
+    justify-content: center;
+  }
+  .business-details {
+    gap: 14px;
+  }
+}

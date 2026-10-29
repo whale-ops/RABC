@@ -1,0 +1,79 @@
+# 应用公共配置：统一数据源、会话、上传、SQL 初始化与日志级别。
+# 关联模块：dev.ps1 注入本地环境变量；各服务共享连接，显式初始化时读取 db 下的建表、数据与菜单升级 SQL。
+
+server:
+  port: ${SERVER_PORT:8080}
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  # 初始化顺序：先建基础表和日志表，再写入基础数据及日志权限。
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql,classpath:db/log-schema.sql,classpath:db/storage-schema.sql,classpath:db/dashboard-schema.sql,classpath:db/business-schema.sql
+      data-locations: classpath:db/data.sql,classpath:db/log-data.sql,classpath:db/storage-data.sql,classpath:db/monitor-data.sql,classpath:db/business-data.sql
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 22MB
+  application:
+    name: star-admin
+  # 系统管理、认证和日志共享此数据源，凭据由环境变量注入。
+  datasource:
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:13306}/${DB_NAME:star_admin}?useUnicode=true&characterEncoding=UTF-8&connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
+    username: ${DB_USERNAME:star}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 10
+      connection-timeout: 5000
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:16379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DATABASE:0}
+      timeout: 3s
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+  flyway:
+    enabled: true
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+    db-config:
+      id-type: assign_id
+# Sa-Token 负责访问令牌；刷新凭据的轮换与撤销由 AuthService 管理。
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 900
+  active-timeout: -1
+  is-concurrent: true
+  is-share: false
+  is-read-cookie: false
+  is-read-body: false
+  token-style: random-64
+  is-log: false
+  is-print: false
+star:
+  # 上传开关、当前存储及各服务器连接统一在后台“系统配置 -> 存储配置”管理。
+  storage:
+    config-key-file: ${STORAGE_CONFIG_KEY_FILE:.runtime/storage-config.key}
+    max-file-size: 20971520
+  # 本地前端可能因端口占用顺延到 5174/5175；仅允许明确列出的来源。
+  public-origins: ${APP_PUBLIC_ORIGINS:http://127.0.0.1:5173,http://localhost:5173,http://127.0.0.1:5174,http://localhost:5174,http://127.0.0.1:5175,http://localhost:5175}
+  cookie-secure: ${COOKIE_SECURE:false}
+  bootstrap-password: ${BOOTSTRAP_ADMIN_PASSWORD:}
+  bootstrap-enabled: ${BOOTSTRAP_ENABLED:false}
+  demo-tenant-enabled: ${DEMO_TENANT_ENABLED:false}
+logging:
+  level:
+    com.star: INFO
+    # SDK 的原始请求及错误可能包含签名信息；业务异常由存储适配层统一转换。
+    com.aliyun.oss: OFF
+    io.minio: OFF

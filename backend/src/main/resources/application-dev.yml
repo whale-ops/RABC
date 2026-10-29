@@ -1,0 +1,21 @@
+# 本地开发覆盖配置：连接已有 MySQL / Redis 并设置是否显式初始化。
+# 关联模块：由启动脚本加载 backend/.env 提供凭据；普通启动不执行建表或基础数据脚本。
+
+# 仅用于本地开发，密码从不纳入版本管理的 backend/.env 中读取。
+spring:
+  sql:
+    init:
+      # 仅显式选择时初始化，已有表和基础记录不会被覆盖。
+      mode: ${DB_INIT_MODE:never}
+  datasource:
+    url: jdbc:mysql://${DB_HOST:127.0.0.1}:${DB_PORT:3306}/${DB_NAME:star_admin}?useUnicode=true&characterEncoding=UTF-8&connectionTimeZone=UTC&forceConnectionTimeZoneToSession=true
+    username: ${DB_USERNAME:star_app}
+    password: ${DB_PASSWORD}
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DATABASE:15}
+star:
+  cookie-secure: ${COOKIE_SECURE:false}

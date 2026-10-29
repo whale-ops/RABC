@@ -1,0 +1,97 @@
+# Star：从项目根目录提交前后端时统一生效。
+
+# 本地环境变量与私密配置（保留可提交的配置示例）
+.env
+.env.*
+*.local
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.template
+!.env.*.template
+
+# 私钥、证书和签名密钥
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa
+id_ed25519
+
+# IDE、操作系统与本地 AI 工作记录
+.idea/
+.vscode/
+.workbuddy/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.factorypath
+.apt_generated/
+.springBeans
+.sts4-cache/
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 运行目录、日志、进程与临时文件
+.runtime/
+logs/
+*.log
+*.log.*
+*.pid
+*.pid.lock
+*.hprof
+*.heapdump
+*.jfr
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.bak
+
+# 本地备份和数据库备份；源码目录内的初始化、迁移 SQL 正常提交
+.backup*/
+.dbbackup/
+backups/
+
+# 前端依赖、构建、缓存及测试报告
+node_modules/
+dist/
+dist-ssr/
+.vite/
+.cache/
+.parcel-cache/
+.turbo/
+coverage/
+.nyc_output/
+.eslintcache
+*.tsbuildinfo
+test-results/
+playwright-report/
+playwright-report-live/
+blob-report/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Java / Maven / Gradle 构建输出；保留构建脚本及依赖锁文件
+target/
+build/
+out/
+.gradle/
+*.class
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# 可重新生成的 PDF 运行资源和浏览器验收截图
+/front/public/pdfjs/
+/front/qa/

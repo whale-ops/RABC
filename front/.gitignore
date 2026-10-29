@@ -1,0 +1,57 @@
+# 前端子项目单独作为仓库时同样生效
+node_modules/
+dist/
+dist-ssr/
+.vite/
+.cache/
+.parcel-cache/
+.turbo/
+coverage/
+.nyc_output/
+.eslintcache
+*.tsbuildinfo
+test-results/
+playwright-report/
+playwright-report-live/
+blob-report/
+
+# 环境变量与凭据；保留示例和依赖锁文件
+.env
+.env.*
+*.local
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.template
+!.env.*.template
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# 本地工具、系统和临时文件
+.idea/
+.vscode/
+.workbuddy/
+.runtime/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.log.*
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# 安装后自动生成的 PDF 资源与浏览器验收截图
+/public/pdfjs/
+/qa/

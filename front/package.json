@@ -1,0 +1,39 @@
+{
+  "name": "star-admin-front",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/prepare-pdf-assets.mjs",
+    "predev": "node scripts/prepare-pdf-assets.mjs",
+    "prebuild": "node scripts/prepare-pdf-assets.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "vue-tsc --noEmit",
+    "test:e2e": "playwright test",
+    "test:live": "playwright test --config playwright.live.config.ts",
+    "screenshots": "node scripts/inspect.mjs"
+  },
+  "dependencies": {
+    "@kousum/semi-ui-vue": "2.78.4",
+    "axios": "1.20.0",
+    "echarts": "6.1.0",
+    "lodash": "^4.17.21",
+    "lucide-vue-next": "^0.468.0",
+    "pdfjs-dist": "6.4.299",
+    "vue": "3.5.44",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "6.0.10",
+    "typescript": "~5.9.3",
+    "vite": "8.3.4",
+    "vue-tsc": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
