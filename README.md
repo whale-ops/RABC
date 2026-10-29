@@ -1,4 +1,4 @@
-# StarAdmin
+# RBAC多租户企业管理平台
 
 企业 RBAC 管理脚手架：Java 17、Spring Boot 3、MyBatis-Plus 3.5、MySQL、Redis、Sa-Token；前端 Vue 3 + Semi UI Vue + Axios。
 
